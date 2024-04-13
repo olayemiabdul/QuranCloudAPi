@@ -5,6 +5,7 @@ import 'package:quranui/screen/page2.dart';
 import 'package:quranui/screen/page3.dart';
 
 import 'package:quranui/screen/quranAudioScreen.dart';
+import 'package:quranui/screen/quranpagesscreen.dart';
 import 'package:quranui/screen/try.dart';
 
 import 'package:quranui/services/NetworkServices.dart';
@@ -23,7 +24,7 @@ class _QuranScreenState extends State<QuranScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: DefaultTabController(
-        length: 5,
+        length: 3,
         child: SafeArea(
           child: Scaffold(
             appBar: AppBar(
@@ -53,12 +54,12 @@ class _QuranScreenState extends State<QuranScreen> {
                 ],
               ),
             ),
-            body: TabBarView(
+            body: const TabBarView(
               children: [
                 AudioScreen(),
                 // NewSurahScreen(),
                 // myPages(),
-                myPage2(),
+                quranPages(),
                 myPage3()
               ],
             ),

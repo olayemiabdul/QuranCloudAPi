@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:quranui/screen/mainScreen.dart';
 
@@ -8,9 +9,12 @@ class QuranApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: QuranScreen(),
+      home: const QuranScreen(),
+      scrollBehavior: ScrollConfiguration.of(context).copyWith(
+        multitouchDragStrategy: MultitouchDragStrategy.sumAllPointers,
+      ),
     );
   }
 }

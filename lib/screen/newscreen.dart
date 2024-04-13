@@ -98,16 +98,16 @@ class _NewSurahScreenState extends State<NewSurahScreen> {
                                         .englishNameTranslation
                                         .toString(),
                                   ),
-                                  onTap: () {
-                                    Navigator.push(context,
-                                        MaterialPageRoute(builder: ((context) {
-                                      return SurahTile(
-                                        surahDetails: olayemi[index],
-                                      );
-                                    })));
-                                  }),
+                                  // onTap: () {
+                                  //   Navigator.push(context,
+                                  //       MaterialPageRoute(builder: ((context) {
+                                  //     return SurahTile(
+                                  //       surahDetails: olayemi[index],
+                                  //     );
+                                  //   })));
+                                  // }),
                             ),
-                          ),
+                          ),),
                         );
                       }),
                 );

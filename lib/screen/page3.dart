@@ -49,79 +49,64 @@ class _myPage3State extends State<myPage3> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          // ElevatedButton(
-          //   onPressed: readSurah,
-          //   child: Text('load surah'),
-          // ),
-          //if (filPages.length > 0)
-          Expanded(
-            child: FutureBuilder(
-              future: readSurah(),
-              builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-                return ListView.builder(
-                  primary: false,
-                    itemCount: allPages.length,
-                    itemBuilder: (context, index) {
-                      return Expanded(
-                        child: Card(
-                          color: Colors.orangeAccent,
-                          child: ListTile(
-                            title: Row(
-                              children: [
-                                Text(allPages[index].englishName.toString()),
-                                SizedBox(width: 5),
-                                Text(
-                                    "(- ${allPages[index].englishNameTranslation.toString()} )")
-                              ],
-                            ),
-                            subtitle: Row(
-                              children: [
-                                Text(allPages[index].revelationType.toString()),
-                                SizedBox(width: 5),
-                                Text(
-                                    "(- ${allPages[index].number.toString()} verses )")
-                              ],
-                            ),
-                            leading: Container(
-                              alignment: Alignment.center,
-                              height: 30,
-                              width: 40,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.black,
-                              ),
-                              child: Text(
-                                allPages[index].number.toString(),
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                            trailing: Text(allPages[index].name.toString()),
-                            onTap: () {
-                              Navigator.push(context,
-                                  MaterialPageRoute(builder: ((context) {
-                                return MyQuranPage(
-                                  ayahdetails: allPages[index],
-                                );
-                              })));
-                            },
-                          ),
+    return SafeArea(
+      child: Scaffold(
+        body: FutureBuilder(
+          future: readSurah(),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            return ListView.builder(
+              primary: false,
+                itemCount: allPages.length,
+                itemBuilder: (context, index) {
+                  return Card(
+                    color: Colors.orangeAccent,
+                    child: ListTile(
+                      title: Row(
+                        children: [
+                          Text(allPages[index].englishName.toString()),
+                          const SizedBox(width: 5),
+                          Text(
+                              "(- ${allPages[index].englishNameTranslation.toString()} )")
+                        ],
+                      ),
+                      subtitle: Row(
+                        children: [
+                          Text(allPages[index].revelationType.toString()),
+                          SizedBox(width: 5),
+                          Text(
+                              "(- ${allPages[index].number.toString()} verses )")
+                        ],
+                      ),
+                      leading: Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        width: 40,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.black,
                         ),
-                      );
-                    });
-              },
-            ),
-          )
-          //else
-          // Container(
-          //   child: Text('load detais'),
-          // ),
-        ],
+                        child: Text(
+                          allPages[index].number.toString(),
+                          style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600),
+                        ),
+                      ),
+                      trailing: Text(allPages[index].name.toString()),
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: ((context) {
+                          return MyQuranPage(
+                            ayahdetails: allPages[index],
+                          );
+                        })));
+                      },
+                    ),
+                  );
+                });
+          },
+        ),
       ),
     );
   }
